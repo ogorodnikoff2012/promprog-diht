@@ -14,7 +14,8 @@ def is_open(addr, port, timeout=10):
         sock.shutdown(socket.SHUT_RDWR)
         sock.close()
         return True
-    except:
+    except OSError as err:
+        print(err)
         time.sleep(timeout)
         return False
 
