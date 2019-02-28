@@ -1,0 +1,26 @@
+version: '3'
+services:
+    producer:
+        build: producer
+
+    consumer:
+        build: consumer
+
+    rabbitmq:
+        image: 'rabbitmq:alpine'
+
+    postgres:
+        image: 'postgres'
+        environment:
+            POSTGRES_PASSWORD: 'postgres'
+            PGDATA: '/var/lib/postgresql/data/pgdata'
+        volumes:
+            - ogorod-pgdata:/var/lib/postgresql/data/pgdata
+
+    adminer_:
+        image: 'adminer'
+        ports:
+            - '8080:8080'
+
+volumes:
+    ogorod-pgdata:
