@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>List of Questions</title>
+    </head>
+    <body>
+        {% if questions %}
+        <h1>Question List</h1>
+            {% for q in questions %}
+            <div class="question">
+                <p>Time: {{q.time}}</p>
+                <p>Topic: {{q.topic}}</p>
+                <div class="question-text">
+                    <p>{{q.text}}</p>
+                </div>
+                {% if q.answers %}
+                <p>Answers:</p>
+                <div class="question-answers">
+                    {% for a in q.answers %}
+                    <div class="question-answers-text">
+                        <p>Time: {{a.time}}</p>
+                        <p>{{a.text}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <a href="questions/answer/{{ q.pk }}">Answer this question!</a>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p>No questions have been defined</p>
+        {% endif %}
+        <a href="questions/new">Ask new question</a>
+    </body>
+</html>

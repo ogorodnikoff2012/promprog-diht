@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    django:
+        build: questions_answers
+        volumes:
+            - ./questions_answers:/code
+        ports:
+            - "8080:8080"
